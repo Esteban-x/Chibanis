@@ -53,7 +53,6 @@ function RootLayoutNav() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="contact" options={{ presentation: 'modal' }} />
       <Stack.Screen name="chat" options={{ presentation: 'modal' }} />
-      <Stack.screen name="login" options={{ presentation: 'modal' }} />
     </Stack>
 
   );
