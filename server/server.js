@@ -9,6 +9,22 @@ app.use(express.json())
 
 mongoose.connect('mongodb://127.0.0.1:27017/chibanis')
 
+app.post('/login', (req, res)=>{
+    const {email, password} = req.body
+    UserModel.findOne({ email: email, password: password})
+    .then(user=>{
+        if (user) {
+            if(user.password === password) {
+                res.json('connexion effectuée')
+            }else {
+                res.json("le mot de passe n'existe pas")
+            }
+        }  else{
+            res.json("Le compte n'existe pas dans la base de donnée")
+        }
+    })
+})
+
 app.post('/register', (req, res)=>{
     UserModel.create(req.body)
     .then(users => res.json(users))
